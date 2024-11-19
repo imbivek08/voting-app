@@ -4,10 +4,17 @@ pipeline {
     environment {
         DOCKER_HUB_CREDENTIALS = 'docker-hub-credentials' // Replace with your Jenkins credentials ID for Docker Hub
         DOCKER_HUB_USERNAME = 'imbivek01' // Replace with your Docker Hub username
-        SERVICES = ['result', 'vote', 'worker'] // Replace with your service names
     }
 
     stages {
+        stage('Initialize Variables') {
+            steps {
+                script {
+                    // Define the services array
+                    SERVICES = ['result', 'vote', 'worker']
+                }
+            }
+        }
         stage('Checkout Code') {
             steps {
                 git url: 'https://github.com/imbivek08/voting-app.git', branch: 'main'
