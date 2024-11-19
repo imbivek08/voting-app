@@ -45,7 +45,7 @@ pipeline {
         stage('Clean Up') {
             steps {
                 // Remove Docker images from the build agent to save space
-                sh "docker rmi -f $(docker images -q) || true"
+                sh 'docker rmi -f $(docker images -q) || true'
             }
         }
     }
